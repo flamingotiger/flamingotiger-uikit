@@ -1,36 +1,28 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from '../lib/Button';
+import Button from "../lib/components/Button";
 
 export default {
-  title: 'Example/Button',
+  title: "Components/Button",
   component: Button,
+  /**
+   * 공통 arg에서는 전부 사용
+   * 하단에 Template에는 각자 control설정
+   */
   argTypes: {
-    backgroundColor: { control: 'color' },
+    children: { control: "text" },
   },
 };
 
 const Template = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
+export const Primary = Template.bind();
 Primary.args = {
-  primary: true,
-  label: 'Button',
+  children: 'Button',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
-
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
+export const Disabled = Template.bind();
+Disabled.args = {
+  children: 'Button',
+  disabled: true
 };
