@@ -1,36 +1,40 @@
-import React from 'react';
+import React from "react";
 
-import { Button } from '../lib/Button';
+import Button, { BUTTON_APPEARANCES } from "../lib/components/Button";
 
 export default {
-  title: 'Example/Button',
+  title: "Components/Button",
   component: Button,
+  /**
+   * 공통 arg에서는 전부 사용
+   * 하단에 Template에는 각자 control설정
+   */
   argTypes: {
-    backgroundColor: { control: 'color' },
+    children: { control: "text" },
+    appearance: {
+      control: {
+        type: 'select',
+        options: [BUTTON_APPEARANCES.PRIMARY, BUTTON_APPEARANCES.PRIMARY_OUTLINE, BUTTON_APPEARANCES.OUTLINE, BUTTON_APPEARANCES.TERTIARY],
+      }
+    }
   },
 };
 
-const Template = (args) => <Button {...args} />;
+export const Basic = (args) => <Button {...args} />;
+Basic.args = { children: 'Button', appearance: BUTTON_APPEARANCES.PRIMARY };
 
-export const Primary = Template.bind({});
-Primary.args = {
-  primary: true,
-  label: 'Button',
-};
+export const Disabled = Basic.bind({});
+Disabled.args = { children: 'Button', disabled: true };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  label: 'Button',
-};
+export const PrimaryOutline = Basic.bind({});
+PrimaryOutline.args = { children: 'Button', appearance: BUTTON_APPEARANCES.PRIMARY_OUTLINE }
 
-export const Large = Template.bind({});
-Large.args = {
-  size: 'large',
-  label: 'Button',
-};
 
-export const Small = Template.bind({});
-Small.args = {
-  size: 'small',
-  label: 'Button',
-};
+export const All = () => (
+  <>
+    <Button appearance="primary">Primary</Button>
+    <Button disabled>Disabled</Button>
+    {/* <Button appearance="tertiary">Tertiary</Button>
+    <Button appearance="outline">Outline</Button> */}
+  </>
+);
