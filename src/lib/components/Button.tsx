@@ -133,13 +133,13 @@ ${(props: { appearance: BUTTON_APPEARANCES }) =>
  * @param children
  */
 
-export interface IButton {
+export interface ButtonProps {
   children?: React.ReactNode;
   appearance?: BUTTON_APPEARANCES;
 }
 
 const Button: React.FC<
-  IButton & React.ButtonHTMLAttributes<HTMLButtonElement>
+  ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
 > = ({
   children = "Button",
   appearance = BUTTON_APPEARANCES.PRIMARY,
