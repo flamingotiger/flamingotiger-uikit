@@ -37,11 +37,21 @@ Tertiary.args = { children: 'Button', appearance: BUTTON_APPEARANCES.TERTIARY }
 
 
 export const All = () => (
-  <>
-    <Button appearance="primary">Primary</Button>
-    <Button disabled>Disabled</Button>
-    <Button appearance="primaryOutline">Primary Outline</Button>
-    <Button appearance="outline">Outline</Button>
-    <Button appearance="tertiary">Tertiary</Button>
-  </>
+  <div style={{ display: 'flex' }}>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="primary">Primary</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button disabled>Disabled</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="primaryOutline">Primary Outline</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="outline">Outline</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="tertiary">Tertiary</Button>
+    </div>
+  </div>
 );
