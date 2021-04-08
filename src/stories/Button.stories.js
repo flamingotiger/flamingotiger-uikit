@@ -21,25 +21,33 @@ export default {
 };
 
 export const Basic = (args) => <Button {...args} />;
-Basic.args = { children: 'Button', appearance: BUTTON_APPEARANCES.PRIMARY };
+Basic.args = { children: 'Primary', appearance: BUTTON_APPEARANCES.PRIMARY };
 
-export const Disabled = Basic.bind({});
-Disabled.args = { children: 'Button', disabled: true };
-
-export const PrimaryOutline = Basic.bind({});
-PrimaryOutline.args = { children: 'Button', appearance: BUTTON_APPEARANCES.PRIMARY_OUTLINE }
-
-export const Outline = Basic.bind({});
-Outline.args = { children: 'Button', appearance: BUTTON_APPEARANCES.OUTLINE }
+export const Secondary = Basic.bind({});
+Secondary.args = { children: 'Secondary', appearance: BUTTON_APPEARANCES.SECONDARY }
 
 export const Tertiary = Basic.bind({});
-Tertiary.args = { children: 'Button', appearance: BUTTON_APPEARANCES.TERTIARY }
+Tertiary.args = { children: 'Tertiary', appearance: BUTTON_APPEARANCES.TERTIARY }
 
+export const Disabled = Basic.bind({});
+Disabled.args = { children: 'Disabled', disabled: true };
+
+export const PrimaryOutline = Basic.bind({});
+PrimaryOutline.args = { children: 'PrimaryOutline', appearance: BUTTON_APPEARANCES.PRIMARY_OUTLINE }
+
+export const Outline = Basic.bind({});
+Outline.args = { children: 'Outline', appearance: BUTTON_APPEARANCES.OUTLINE }
 
 export const All = () => (
   <div style={{ display: 'flex' }}>
     <div style={{ marginRight: '4px' }}>
       <Button appearance="primary">Primary</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="secondary">Secondary</Button>
+    </div>
+    <div style={{ marginRight: '4px' }}>
+      <Button appearance="tertiary">Tertiary</Button>
     </div>
     <div style={{ marginRight: '4px' }}>
       <Button disabled>Disabled</Button>
@@ -49,9 +57,6 @@ export const All = () => (
     </div>
     <div style={{ marginRight: '4px' }}>
       <Button appearance="outline">Outline</Button>
-    </div>
-    <div style={{ marginRight: '4px' }}>
-      <Button appearance="tertiary">Tertiary</Button>
     </div>
   </div>
 );

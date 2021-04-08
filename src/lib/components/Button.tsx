@@ -7,6 +7,7 @@ import { Sizes } from "../sizes";
 export enum BUTTON_APPEARANCES {
   PRIMARY = "primary",
   PRIMARY_OUTLINE = "primaryOutline",
+  SECONDARY = "secondary",
   TERTIARY = "tertiary",
   OUTLINE = "outline",
 }
@@ -97,6 +98,19 @@ export const SButton = styled.button`
     &:active {
       border-color: ${Colors["dark-gray"].color};
       color: ${Colors["dark-gray"].color};
+    }`}
+
+${(props: { appearance: BUTTON_APPEARANCES }) =>
+    props.appearance === BUTTON_APPEARANCES.SECONDARY &&
+    `
+    color: ${Colors.primary.color};
+    background-color: transparent;
+    transition: 0.3s transform, 0.3s background-color;
+
+    &:hover{
+      transform: translateY(-4px);
+    }
+    &:active {
     }`}
 
 ${(props: { appearance: BUTTON_APPEARANCES }) =>
