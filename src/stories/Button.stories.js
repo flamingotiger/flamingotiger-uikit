@@ -29,12 +29,19 @@ Disabled.args = { children: 'Button', disabled: true };
 export const PrimaryOutline = Basic.bind({});
 PrimaryOutline.args = { children: 'Button', appearance: BUTTON_APPEARANCES.PRIMARY_OUTLINE }
 
+export const Outline = Basic.bind({});
+Outline.args = { children: 'Button', appearance: BUTTON_APPEARANCES.OUTLINE }
+
+export const Tertiary = Basic.bind({});
+Tertiary.args = { children: 'Button', appearance: BUTTON_APPEARANCES.TERTIARY }
+
 
 export const All = () => (
   <>
     <Button appearance="primary">Primary</Button>
     <Button disabled>Disabled</Button>
-    {/* <Button appearance="tertiary">Tertiary</Button>
-    <Button appearance="outline">Outline</Button> */}
+    <Button appearance="primaryOutline">Primary Outline</Button>
+    <Button appearance="outline">Outline</Button>
+    <Button appearance="tertiary">Tertiary</Button>
   </>
 );

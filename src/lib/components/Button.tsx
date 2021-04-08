@@ -22,6 +22,7 @@ export const SResetButton = css`
   appearance: none;
   text-transform: none;
   outline: none;
+  box-sizing: border-box;
 `;
 
 /**
@@ -80,6 +81,37 @@ export const SButton = styled.button`
     &:active {
       background: ${Colors.primary.color};
       color: ${Colors.white.color};
+    }`}
+    
+    ${(props: { appearance: BUTTON_APPEARANCES }) =>
+    props.appearance === BUTTON_APPEARANCES.OUTLINE &&
+    `
+    color: ${Colors.gray.color};
+    background-color: ${Colors.white.color};
+    border:1px solid ${Colors.gray.color};
+    transition: 0.3s transform, 0.3s border, 0.3s color;
+
+    &:hover{
+      transform: translateY(-4px);
+    }
+    &:active {
+      border-color: ${Colors["dark-gray"].color};
+      color: ${Colors["dark-gray"].color};
+    }`}
+
+${(props: { appearance: BUTTON_APPEARANCES }) =>
+    props.appearance === BUTTON_APPEARANCES.TERTIARY &&
+    `
+    color: ${Colors["dark-gray"].color};
+    background-color: #dddddd;
+    border:1px solid ${Colors.white.color};
+    transition: 0.3s transform, 0.3s background-color;
+
+    &:hover{
+      transform: translateY(-4px);
+    }
+    &:active {
+      background-color: ${Colors.gray.color};
     }`}
 `;
 /**

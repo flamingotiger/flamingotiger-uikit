@@ -42,7 +42,8 @@ export const Colors: { [key: string]: Color } = {
   "dark-primary": new Color("#ff5722"),
   orange: new Color("#ff6d00"),
   "dark-orange": new Color("#ff5722"),
-  gray: new Color("#707070"),
+  gray: new Color("#999999"),
+  "dark-gray": new Color("#333333"),
   white: new Color("#ffffff"),
   black: new Color("#000000"),
 };
