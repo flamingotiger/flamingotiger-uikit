@@ -1,5 +1,4 @@
 import React from "react";
-
 import Button, { BUTTON_APPEARANCES } from "../lib/components/Button";
 
 export default {

@@ -134,10 +134,17 @@ ${(props: { appearance: BUTTON_APPEARANCES }) =>
  */
 
 export interface ButtonProps {
+  /** 버튼 텍스트 */
   children?: React.ReactNode;
+  /** 버튼 타입 */
   appearance?: BUTTON_APPEARANCES;
 }
 
+/** 버튼을 사용하고 싶을 땐 `Button` 컴포넌트를 사용하세요.
+ *
+ * 이 컴포넌트는 기본 배경 체워짐 형태로 사용되며, appearance을 선택하여 버튼 타입을 변경할 수 있습니다.
+ *
+ */
 const Button: React.FC<
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
 > = ({
