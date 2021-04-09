@@ -10,6 +10,7 @@ export type ButtonGroupProps = {
   children: React.ReactNode;
   /* 스타일 커스터마이징 하고싶을 때 사용 */
   className?: string;
+  style?: React.CSSProperties;
 };
 
 /**
@@ -17,12 +18,15 @@ export type ButtonGroupProps = {
  * @param direction
  * @param children
  * @param gap
+ * @param className
+ * @param style
  */
 const ButtonGroup: React.FC<ButtonGroupProps & React.HTMLAttributes<HTMLDivElement>> = ({
   direction = "row",
   children,
   gap = "0.5rem",
   className,
+  style,
   ...props
 }) => {
   return (
@@ -30,6 +34,7 @@ const ButtonGroup: React.FC<ButtonGroupProps & React.HTMLAttributes<HTMLDivEleme
       style={{
         display: "flex",
         flexDirection: direction,
+        ...style
       }}
       direction={direction}
       gap={gap}

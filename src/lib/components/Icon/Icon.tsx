@@ -26,10 +26,11 @@ export interface IconProps {
   color?: string;
   /** 아이콘 크기 */
   size?: string | number;
-  /** 클래스 이름 */
-  className?: string;
   /** 가로 세로 정렬 */
   block?: boolean;
+  /* 스타일 커스터마이징 하고싶을 때 사용 */
+  className?: string;
+  style?: React.CSSProperties;
 }
 /** 아이콘을 보여주고 싶을 땐 `Icon` 컴포넌트를 사용하세요.
  *
@@ -37,14 +38,16 @@ export interface IconProps {
  * @param icon
  * @param color
  * @param size
- * @param className
  * @param block
+ * @param className
+ * @param style
  */
 const Icon: React.FC<IconProps> = ({
   icon,
   color,
   size,
   className,
+  style,
   block = false,
   ...props
 }) => {
@@ -55,6 +58,7 @@ const Icon: React.FC<IconProps> = ({
       style={{
         width: size,
         height: size,
+        ...style,
       }}
       block={block}
       className={className}

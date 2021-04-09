@@ -13,7 +13,7 @@ export const background = {
 export const color = {
   // Palette
   primary: "#FF6d00",
-  secondary: "#1EA7FD",
+  secondary: "#FF6d00",
   tertiary: "#DDDDDD",
 
   primarydark: "#FF5722",

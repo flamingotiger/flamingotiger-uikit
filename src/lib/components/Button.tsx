@@ -128,11 +128,6 @@ ${(props: { theme: BUTTON_THEME }) =>
     }`}
 `;
 
-/**
- * 커스텀 버튼 타입 정의
- *
- *
- */
 export interface ButtonProps {
   /** 버튼 텍스트 */
   children?: React.ReactNode;
