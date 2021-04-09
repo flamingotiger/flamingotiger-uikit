@@ -12,10 +12,7 @@ export enum BUTTON_APPEARANCES {
   OUTLINE = "outline",
 }
 
-/**
- * 기본 버튼 리셋 스타일
- */
-export const SResetButton = css`
+export const ResetButtonStyle = css`
   margin: 0;
   padding: 0;
   border: none;
@@ -26,11 +23,9 @@ export const SResetButton = css`
   box-sizing: border-box;
 `;
 
-/**
- * 기본 버튼 스타일
- */
-export const SButton = styled.button`
-  ${SResetButton};
+
+export const ButtonStyle = styled.button`
+  ${ResetButtonStyle};
   border-radius: 0.25rem;
   position: relative;
   padding: 0.375rem 0.75rem;
@@ -57,7 +52,7 @@ export const SButton = styled.button`
       background: ${color.primarydark};
     }
     &:focus {
-      box-shadow: 0 0 0 0.25rem rgb(${rgba(color.primary, 0.5)});
+      box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
       background: ${color.primarydark};
     }
 `}
@@ -129,11 +124,12 @@ ${(props: { appearance: BUTTON_APPEARANCES }) =>
       background-color: ${darken(0.1, color.medium)};
     }`}
 `;
+
 /**
  * 커스텀 버튼 타입 정의
- * @param children
+ * 
+ * 
  */
-
 export interface ButtonProps {
   /** 버튼 텍스트 */
   children?: React.ReactNode;
@@ -144,7 +140,8 @@ export interface ButtonProps {
 /** 버튼을 사용하고 싶을 땐 `Button` 컴포넌트를 사용하세요.
  *
  * 이 컴포넌트는 기본 배경 체워짐 형태로 사용되며, appearance을 선택하여 버튼 타입을 변경할 수 있습니다.
- *
+ * @param children  
+ * @param apperance
  */
 const Button: React.FC<
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
@@ -154,9 +151,9 @@ const Button: React.FC<
   ...props
 }) => {
   return (
-    <SButton appearance={appearance} {...props}>
+    <ButtonStyle appearance={appearance} {...props}>
       {children}
-    </SButton>
+    </ButtonStyle>
   );
 };
 
