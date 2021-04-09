@@ -26,6 +26,9 @@ export const ResetButtonStyle = css`
 
 export const ButtonStyle = styled.button`
   ${ResetButtonStyle};
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border-radius: 0.25rem;
   position: relative;
   padding: 0.375rem 0.75rem;
@@ -41,6 +44,10 @@ export const ButtonStyle = styled.button`
   vertical-align: top;
   white-space: nowrap;
   cursor: pointer;
+
+  &:focus {
+    z-index: 1;
+  }
 
   ${(props: { theme: BUTTON_THEME }) =>
     props.theme === BUTTON_THEME.PRIMARY &&
