@@ -28,8 +28,6 @@ export interface IconProps {
   size?: string | number;
   /** 클래스 이름 */
   className?: string;
-  /** 스타일 */
-  style?: React.CSSProperties;
   /** 가로 세로 정렬 */
   block?: boolean;
 }
@@ -40,7 +38,6 @@ export interface IconProps {
  * @param color
  * @param size
  * @param className
- * @param style
  * @param block
  */
 const Icon: React.FC<IconProps> = ({
@@ -48,22 +45,20 @@ const Icon: React.FC<IconProps> = ({
   color,
   size,
   className,
-  style,
   block = false,
   ...props
 }) => {
   const SVGIcon = icons[icon];
   return (
     <Svg
-      {...props}
       viewBox="0 0 1024 1024"
       style={{
         width: size,
         height: size,
-        ...style,
       }}
       block={block}
       className={className}
+      {...props}
     >
       <Path d={SVGIcon} style={{ fill: color || "currentColor" }} />
     </Svg>

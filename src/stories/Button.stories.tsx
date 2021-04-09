@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { BUTTON_THEME } from "../lib/components/Button";
+import Button, { ButtonProps, BUTTON_THEME } from "../lib/components/Button";
 
 export default {
   title: "Components/Button",
@@ -22,15 +22,7 @@ export default {
   },
 };
 
-type ArgTypes = {
-  theme: BUTTON_THEME;
-  disabled: boolean;
-  children: React.ReactNode;
-};
-
-export const Basic = (args: ArgTypes) => (
-  <Button {...args} />
-);
+export const Basic = (args: ButtonProps) => <Button {...args} />;
 Basic.args = {
   theme: BUTTON_THEME.PRIMARY,
 };
