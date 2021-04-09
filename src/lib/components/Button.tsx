@@ -23,7 +23,6 @@ export const ResetButtonStyle = css`
   box-sizing: border-box;
 `;
 
-
 export const ButtonStyle = styled.button`
   ${ResetButtonStyle};
   border-radius: 0.25rem;
@@ -36,7 +35,7 @@ export const ButtonStyle = styled.button`
   appearance: button;
   user-select: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+    box-shadow 0.15s ease-in-out, border-color 0.15s ease-in-out;
   will-change: transform;
   vertical-align: top;
   white-space: nowrap;
@@ -53,7 +52,6 @@ export const ButtonStyle = styled.button`
     }
     &:focus {
       box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
-      background: ${color.primarydark};
     }
 `}
 
@@ -72,11 +70,12 @@ export const ButtonStyle = styled.button`
     `
     color: ${color.primary};
     background-color: ${color.white};
-    border:1px solid ${color.primary};
+    border: 1px solid ${color.primary};
 
-    &:active {
+    &:focus {
       background: ${color.primary};
       color: ${color.white};
+      box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
     
     ${(props: { appearance: BUTTON_APPEARANCES }) =>
@@ -85,14 +84,16 @@ export const ButtonStyle = styled.button`
     color: ${color.medium};
     background-color: ${color.white};
     border:1px solid ${color.medium};
-    transition: 0.3s transform, 0.3s border, 0.3s color;
 
     &:hover{
-      transform: translateY(-4px);
-    }
-    &:active {
-      border-color: ${color.primarydark};
       color: ${color.primarydark};
+      border-color: ${color.primarydark};
+    }
+
+    &:focus {
+      color: ${color.primarydark};
+      border-color: ${color.primarydark};
+      box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
 
 ${(props: { appearance: BUTTON_APPEARANCES }) =>
@@ -100,35 +101,32 @@ ${(props: { appearance: BUTTON_APPEARANCES }) =>
     `
     color: ${color.primary};
     background-color: transparent;
-    transition: 0.3s transform, 0.3s background-color;
 
     &:hover{
-      transform: translateY(-4px);
+      color: ${lighten(0.1, color.primary)};
     }
-    &:active {
-        color: ${lighten(0.1, color.primary)};
+    &:focus {
+      box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
 
 ${(props: { appearance: BUTTON_APPEARANCES }) =>
     props.appearance === BUTTON_APPEARANCES.TERTIARY &&
     `
-    color: ${color.mediumdark};
-    background-color: ${color.medium};
-    border:1px solid ${color.white};
-    transition: 0.3s transform, 0.3s background-color;
+    color: ${color.white};
+    background-color: ${color.mediumdark};
 
     &:hover{
-      transform: translateY(-4px);
+      background-color: ${darken(0.05, color.mediumdark)};
     }
-    &:active {
-      background-color: ${darken(0.1, color.medium)};
+    &:focus {
+      box-shadow: 0 0 0 0.25rem ${rgba(color.mediumdark, 0.5)};
     }`}
 `;
 
 /**
  * 커스텀 버튼 타입 정의
- * 
- * 
+ *
+ *
  */
 export interface ButtonProps {
   /** 버튼 텍스트 */
@@ -140,7 +138,7 @@ export interface ButtonProps {
 /** 버튼을 사용하고 싶을 땐 `Button` 컴포넌트를 사용하세요.
  *
  * 이 컴포넌트는 기본 배경 체워짐 형태로 사용되며, appearance을 선택하여 버튼 타입을 변경할 수 있습니다.
- * @param children  
+ * @param children
  * @param apperance
  */
 const Button: React.FC<
