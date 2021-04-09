@@ -53,7 +53,7 @@ export const ButtonStyle = styled.button`
     }
 `}
 
-  ${(props: { theme: BUTTON_THEME; disabled: boolean }) =>
+  ${(props: { theme: BUTTON_THEME; disabled?: boolean }) =>
     (props.disabled || props.theme === BUTTON_THEME.DISABLED) &&
     `
       cursor: not-allowed !important;
