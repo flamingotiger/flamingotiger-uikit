@@ -17,12 +17,10 @@ export default {
   },
 };
 
-export const Basic = (args: IconProps) => (
-  <Icon {...args} />
-);
+export const Basic = (args: IconProps) => <Icon {...args} />;
 Basic.args = {
-  icon: 'plus'
-}
+  icon: "plus",
+};
 
 export const CustomSize = () => <Icon icon="plus" size="4rem" />;
 
@@ -30,6 +28,22 @@ export const CustomColor = () => <Icon icon="plus" color="red" />;
 
 export const CustomizedWithStyle = () => (
   <Icon icon="plus" style={{ color: "red", width: "4rem" }} />
+);
+
+export const InlineBlockIcon = () => (
+  <p>
+    This is inline block
+    <Icon icon="user" />
+    User Icon!!
+  </p>
+);
+
+export const BlockIcon = () => (
+  <p>
+    This is block
+    <Icon icon="user" block />
+    User Icon!!
+  </p>
 );
 
 const IconList = styled.ul`
