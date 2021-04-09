@@ -1,5 +1,5 @@
 import React from "react";
-import { icons } from "./svg/icons";
+import { icons } from "./icons";
 import styled from "@emotion/styled";
 
 type IconType = keyof typeof icons;
@@ -55,23 +55,18 @@ const Icon: React.FC<IconProps> = ({
   const SVGIcon = icons[icon];
   return (
     <Svg
-      viewBox="0 0 1024 1024"
-      width={size}
-      height={size}
-      block={block}
       {...props}
+      viewBox="0 0 1024 1024"
+      style={{
+        width: size,
+        height: size,
+        ...style,
+      }}
+      block={block}
+      className={className}
     >
-      <Path d={SVGIcon} />
+      <Path d={SVGIcon} style={{ fill: color || "currentColor" }} />
     </Svg>
-    // <SVGIcon
-    //   style={{
-    //     fill: color || "currentColor",
-    //     width: size,
-    //     height: "auto",
-    //     ...style,
-    //   }}
-    //   className={className}
-    // />
   );
 };
 
