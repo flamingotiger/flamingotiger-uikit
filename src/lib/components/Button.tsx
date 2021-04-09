@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { Colors } from "../colors";
-import { Sizes } from "../sizes";
+import { color, typography } from "../../shared/styles";
+import { darken, lighten, rem, rgba } from "polished";
 
 export enum BUTTON_APPEARANCES {
   PRIMARY = "primary",
@@ -34,10 +34,10 @@ export const SButton = styled.button`
   border-radius: 0.25rem;
   position: relative;
   padding: 0.375rem 0.75rem;
-  font-size: ${Sizes.md.rem};
-  line-height: ${Sizes.xlg.rem};
-  background-color: ${Colors.primary.color};
-  color: ${Colors.white.color};
+  font-size: ${rem(typography.size.s3)};
+  line-height: ${rem(typography.size.s3)};
+  background-color: ${color.primary};
+  color: ${color.white};
   appearance: button;
   user-select: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
@@ -54,11 +54,11 @@ export const SButton = styled.button`
     props.appearance === BUTTON_APPEARANCES.PRIMARY &&
     `
     &:hover {
-      background: ${Colors["dark-primary"].color};
+      background: ${color.primarydark};
     }
     &:focus {
-      box-shadow: 0 0 0 0.25rem rgb(${Colors.primary.rgb}, 0.5);
-      background: ${Colors["dark-primary"].color};
+      box-shadow: 0 0 0 0.25rem rgb(${rgba(color.primary, 0.5)});
+      background: ${color.primarydark};
     }
 `}
 
@@ -66,44 +66,44 @@ export const SButton = styled.button`
     props.disabled &&
     `
       cursor: not-allowed !important;
-      background-color: ${Colors.gray.color};
+      background-color: ${color.medium};
       &:disabled {
-        background-color: ${Colors.gray.color};
+        background-color: ${color.medium};
       }
     `}
 
   ${(props: { appearance: BUTTON_APPEARANCES }) =>
     props.appearance === BUTTON_APPEARANCES.PRIMARY_OUTLINE &&
     `
-    color: ${Colors.primary.color};
-    background-color: ${Colors.white.color};
-    border:1px solid ${Colors.primary.color};
+    color: ${color.primary};
+    background-color: ${color.white};
+    border:1px solid ${color.primary};
 
     &:active {
-      background: ${Colors.primary.color};
-      color: ${Colors.white.color};
+      background: ${color.primary};
+      color: ${color.white};
     }`}
     
     ${(props: { appearance: BUTTON_APPEARANCES }) =>
     props.appearance === BUTTON_APPEARANCES.OUTLINE &&
     `
-    color: ${Colors.gray.color};
-    background-color: ${Colors.white.color};
-    border:1px solid ${Colors.gray.color};
+    color: ${color.medium};
+    background-color: ${color.white};
+    border:1px solid ${color.medium};
     transition: 0.3s transform, 0.3s border, 0.3s color;
 
     &:hover{
       transform: translateY(-4px);
     }
     &:active {
-      border-color: ${Colors["dark-gray"].color};
-      color: ${Colors["dark-gray"].color};
+      border-color: ${color.primarydark};
+      color: ${color.primarydark};
     }`}
 
 ${(props: { appearance: BUTTON_APPEARANCES }) =>
     props.appearance === BUTTON_APPEARANCES.SECONDARY &&
     `
-    color: ${Colors.primary.color};
+    color: ${color.primary};
     background-color: transparent;
     transition: 0.3s transform, 0.3s background-color;
 
@@ -111,21 +111,22 @@ ${(props: { appearance: BUTTON_APPEARANCES }) =>
       transform: translateY(-4px);
     }
     &:active {
+        color: ${lighten(0.1, color.primary)};
     }`}
 
 ${(props: { appearance: BUTTON_APPEARANCES }) =>
     props.appearance === BUTTON_APPEARANCES.TERTIARY &&
     `
-    color: ${Colors["dark-gray"].color};
-    background-color: #dddddd;
-    border:1px solid ${Colors.white.color};
+    color: ${color.mediumdark};
+    background-color: ${color.medium};
+    border:1px solid ${color.white};
     transition: 0.3s transform, 0.3s background-color;
 
     &:hover{
       transform: translateY(-4px);
     }
     &:active {
-      background-color: ${Colors.gray.color};
+      background-color: ${darken(0.1, color.medium)};
     }`}
 `;
 /**

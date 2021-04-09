@@ -4,10 +4,6 @@ import Button, { BUTTON_APPEARANCES } from "../lib/components/Button";
 export default {
   title: "Components/Button",
   component: Button,
-  /**
-   * 공통 arg에서는 전부 사용
-   * 하단에 Template에는 각자 control설정
-   */
   argTypes: {
     children: { control: "text" },
     disabled: false,
@@ -32,9 +28,7 @@ type ArgTypes = {
 };
 
 export const Basic = (args: ArgTypes) => (
-  <Button appearance={BUTTON_APPEARANCES.PRIMARY} {...args}>
-    PRIMARY
-  </Button>
+  <Button appearance={BUTTON_APPEARANCES.PRIMARY} {...args} />
 );
 
 export const Secondary = () => (
