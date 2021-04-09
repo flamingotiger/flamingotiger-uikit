@@ -1,8 +1,23 @@
 import React from "react";
-import * as icons from "./svg";
+import { icons } from "./svg/icons";
+import styled from "@emotion/styled";
 
 type IconType = keyof typeof icons;
 export const iconTypes: IconType[] = Object.keys(icons) as any[]; // 스토리에서 불러오기 위함
+
+const Svg = styled.svg`
+  display: ${(props: { block: boolean }) =>
+    props.block ? "block" : "inline-block"};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+  width: 20px;
+  height: 20px;
+`;
+
+const Path = styled.path`
+  fill: currentColor;
+`;
 
 export interface IconProps {
   /** 사용 할 아이콘 타입 */
@@ -15,6 +30,8 @@ export interface IconProps {
   className?: string;
   /** 스타일 */
   style?: React.CSSProperties;
+  /** 가로 세로 정렬 */
+  block?: boolean;
 }
 /** 아이콘을 보여주고 싶을 땐 `Icon` 컴포넌트를 사용하세요.
  *
@@ -24,19 +41,37 @@ export interface IconProps {
  * @param size
  * @param className
  * @param style
+ * @param block
  */
-const Icon: React.FC<IconProps> = ({ icon, color, size, className, style }) => {
+const Icon: React.FC<IconProps> = ({
+  icon,
+  color,
+  size,
+  className,
+  style,
+  block = false,
+  ...props
+}) => {
   const SVGIcon = icons[icon];
   return (
-    <SVGIcon
-      style={{
-        fill: color || "currentColor",
-        width: size,
-        height: "auto",
-        ...style,
-      }}
-      className={className}
-    />
+    <Svg
+      viewBox="0 0 1024 1024"
+      width={size}
+      height={size}
+      block={block}
+      {...props}
+    >
+      <Path d={SVGIcon} />
+    </Svg>
+    // <SVGIcon
+    //   style={{
+    //     fill: color || "currentColor",
+    //     width: size,
+    //     height: "auto",
+    //     ...style,
+    //   }}
+    //   className={className}
+    // />
   );
 };
 
