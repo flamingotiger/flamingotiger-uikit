@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { ButtonProps, BUTTON_THEME } from "../lib/components/Button";
+import Button, { ButtonProps, BUTTON_APPERANCE } from "../lib/components/Button";
 import { Story, Meta } from "@storybook/react";
 
 export default {
@@ -8,15 +8,15 @@ export default {
   argTypes: {
     children: { control: "text" },
     disabled: { control: "boolean" },
-    theme: {
+    apperance: {
       control: {
         type: "select",
         options: [
-          BUTTON_THEME.PRIMARY,
-          BUTTON_THEME.PRIMARY_OUTLINE,
-          BUTTON_THEME.OUTLINE,
-          BUTTON_THEME.DISABLED,
-          BUTTON_THEME.TERTIARY,
+          BUTTON_APPERANCE.PRIMARY,
+          BUTTON_APPERANCE.PRIMARY_OUTLINE,
+          BUTTON_APPERANCE.OUTLINE,
+          BUTTON_APPERANCE.DISABLED,
+          BUTTON_APPERANCE.TERTIARY,
         ],
       },
     },
@@ -25,59 +25,59 @@ export default {
 
 export const Basic: Story<ButtonProps> = (args) => <Button {...args} />;
 Basic.args = {
-  theme: BUTTON_THEME.PRIMARY,
+  apperance: BUTTON_APPERANCE.PRIMARY,
   children: "PRIMARY",
 };
 
 export const Secondary = Basic.bind({});
 Secondary.args = {
-  theme: BUTTON_THEME.SECONDARY,
+  apperance: BUTTON_APPERANCE.SECONDARY,
   children: "SECONDARY",
 };
 
 export const Tertiary = Basic.bind({});
 Tertiary.args = {
-  theme: BUTTON_THEME.TERTIARY,
+  apperance: BUTTON_APPERANCE.TERTIARY,
   children: "TERTIARY",
 };
 export const Disabled = Basic.bind({});
 Disabled.args = {
   children: "DISABLED",
-  theme: BUTTON_THEME.DISABLED,
+  apperance: BUTTON_APPERANCE.DISABLED,
   disalbed: true,
 };
 
 export const PrimaryOutline = Basic.bind({});
 PrimaryOutline.args = {
   children: "PRIMARY OUTLINE",
-  theme: BUTTON_THEME.PRIMARY_OUTLINE,
+  apperance: BUTTON_APPERANCE.PRIMARY_OUTLINE,
 };
 
 export const Outline = Basic.bind({});
 Outline.args = {
   children: "OUTLINE",
-  theme: BUTTON_THEME.OUTLINE,
+  apperance: BUTTON_APPERANCE.OUTLINE,
 };
 
 export const All = () => (
   <div style={{ display: "flex" }}>
     <div style={{ marginRight: "4px" }}>
-      <Button theme={BUTTON_THEME.PRIMARY}>Primary</Button>
+      <Button apperance={BUTTON_APPERANCE.PRIMARY}>Primary</Button>
     </div>
     <div style={{ marginRight: "4px" }}>
-      <Button theme={BUTTON_THEME.SECONDARY}>Secondary</Button>
+      <Button apperance={BUTTON_APPERANCE.SECONDARY}>Secondary</Button>
     </div>
     <div style={{ marginRight: "4px" }}>
-      <Button theme={BUTTON_THEME.TERTIARY}>Tertiary</Button>
+      <Button apperance={BUTTON_APPERANCE.TERTIARY}>Tertiary</Button>
     </div>
     <div style={{ marginRight: "4px" }}>
       <Button disabled>Disabled</Button>
     </div>
     <div style={{ marginRight: "4px" }}>
-      <Button theme={BUTTON_THEME.PRIMARY_OUTLINE}>Primary Outline</Button>
+      <Button apperance={BUTTON_APPERANCE.PRIMARY_OUTLINE}>Primary Outline</Button>
     </div>
     <div style={{ marginRight: "4px" }}>
-      <Button theme={BUTTON_THEME.OUTLINE}>Outline</Button>
+      <Button apperance={BUTTON_APPERANCE.OUTLINE}>Outline</Button>
     </div>
   </div>
 );

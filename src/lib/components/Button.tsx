@@ -4,7 +4,7 @@ import { css } from "@emotion/react";
 import { color, typography } from "../../shared/styles";
 import { darken, lighten, rem, rgba } from "polished";
 
-export enum BUTTON_THEME {
+export enum BUTTON_APPERANCE {
   PRIMARY = "primary",
   PRIMARY_OUTLINE = "primaryOutline",
   SECONDARY = "secondary",
@@ -49,8 +49,8 @@ export const ButtonStyle = styled.button`
     z-index: 1;
   }
 
-  ${(props: { theme: BUTTON_THEME }) =>
-    props.theme === BUTTON_THEME.PRIMARY &&
+  ${(props: { apperance: BUTTON_APPERANCE }) =>
+    props.apperance === BUTTON_APPERANCE.PRIMARY &&
     `
     &:hover {
       background: ${color.primarydark};
@@ -60,8 +60,8 @@ export const ButtonStyle = styled.button`
     }
 `}
 
-  ${(props: { theme: BUTTON_THEME; disabled?: boolean }) =>
-    (props.disabled || props.theme === BUTTON_THEME.DISABLED) &&
+  ${(props: { apperance: BUTTON_APPERANCE; disabled?: boolean }) =>
+    (props.disabled || props.apperance === BUTTON_APPERANCE.DISABLED) &&
     `
       cursor: not-allowed !important;
       background-color: ${color.medium};
@@ -70,8 +70,8 @@ export const ButtonStyle = styled.button`
       }
     `}
 
-  ${(props: { theme: BUTTON_THEME }) =>
-    props.theme === BUTTON_THEME.PRIMARY_OUTLINE &&
+  ${(props: { apperance: BUTTON_APPERANCE }) =>
+    props.apperance === BUTTON_APPERANCE.PRIMARY_OUTLINE &&
     `
     color: ${color.primary};
     background-color: ${color.white};
@@ -83,8 +83,8 @@ export const ButtonStyle = styled.button`
       box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
     
-    ${(props: { theme: BUTTON_THEME }) =>
-    props.theme === BUTTON_THEME.OUTLINE &&
+    ${(props: { apperance: BUTTON_APPERANCE }) =>
+    props.apperance === BUTTON_APPERANCE.OUTLINE &&
     `
     color: ${color.medium};
     background-color: ${color.white};
@@ -101,8 +101,8 @@ export const ButtonStyle = styled.button`
       box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
 
-${(props: { theme: BUTTON_THEME }) =>
-    props.theme === BUTTON_THEME.SECONDARY &&
+${(props: { apperance: BUTTON_APPERANCE }) =>
+    props.apperance === BUTTON_APPERANCE.SECONDARY &&
     `
     color: ${color.primary};
     background-color: transparent;
@@ -114,8 +114,8 @@ ${(props: { theme: BUTTON_THEME }) =>
       box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
     }`}
 
-${(props: { theme: BUTTON_THEME }) =>
-    props.theme === BUTTON_THEME.TERTIARY &&
+${(props: { apperance: BUTTON_APPERANCE }) =>
+    props.apperance === BUTTON_APPERANCE.TERTIARY &&
     `
     color: ${color.white};
     background-color: ${color.mediumdark};
@@ -132,7 +132,7 @@ export interface ButtonProps {
   /** 버튼 텍스트 */
   children?: React.ReactNode;
   /** 버튼 타입 */
-  theme?: BUTTON_THEME;
+  apperance?: BUTTON_APPERANCE;
   /** 버튼 사용여부 */
   disalbed?: boolean;
 }
@@ -141,13 +141,13 @@ export interface ButtonProps {
  *
  * 이 컴포넌트는 기본 배경 체워짐 형태로 사용되며, appearance을 선택하여 버튼 타입을 변경할 수 있습니다.
  * @param children
- * @param theme
+ * @param apperance
  */
 const Button: React.FC<
   ButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>
-> = ({ children = "Button", theme = BUTTON_THEME.PRIMARY, ...props }) => {
+> = ({ children = "Button", apperance = BUTTON_APPERANCE.PRIMARY, ...props }) => {
   return (
-    <ButtonStyle theme={theme} {...props}>
+    <ButtonStyle apperance={apperance} {...props}>
       {children}
     </ButtonStyle>
   );

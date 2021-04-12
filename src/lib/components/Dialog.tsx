@@ -1,7 +1,7 @@
 import React from "react";
 import { Fragment } from "react";
 import { css } from "@emotion/react";
-import Button, { BUTTON_THEME } from "../components/Button";
+import Button, { BUTTON_APPERANCE } from "../components/Button";
 import ButtonGroup, { BUTTON_GROUP_ALIGN } from "../components/ButtonGroup";
 import styled from "@emotion/styled";
 
@@ -112,7 +112,7 @@ const Dialog: React.FC<DialogProps> = ({
           {!hideButtons && (
             <ButtonGroup style={{ marginTop: "1rem" }} buttonGroupAlign={BUTTON_GROUP_ALIGN.RIGHT}>
               {cancellable && (
-                <Button theme={BUTTON_THEME.TERTIARY} onClick={onCancel}>
+                <Button apperance={BUTTON_APPERANCE.TERTIARY} onClick={onCancel}>
                   {cancelText}
                 </Button>
               )}

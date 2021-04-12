@@ -3,7 +3,7 @@ import ButtonGroup, {
   ButtonGroupProps,
   BUTTON_GROUP_ALIGN,
 } from "../lib/components/ButtonGroup";
-import Button, { BUTTON_THEME } from "../lib/components/Button";
+import Button, { BUTTON_APPERANCE } from "../lib/components/Button";
 import Icon from "../lib/components/Icon/Icon";
 import { Story, Meta } from "@storybook/react";
 
@@ -35,7 +35,7 @@ Basic.args = {
   direction: "row",
   gap: "0.5rem",
   children: [
-    <Button theme={BUTTON_THEME.TERTIARY}>취소</Button>,
+    <Button apperance={BUTTON_APPERANCE.TERTIARY}>취소</Button>,
     <Button>확인</Button>,
   ],
 };
@@ -50,7 +50,7 @@ export const CustomGap = Basic.bind({});
 CustomGap.args = {
   gap: "2rem",
   children: [
-    <Button theme={BUTTON_THEME.TERTIARY}>취소</Button>,
+    <Button apperance={BUTTON_APPERANCE.TERTIARY}>취소</Button>,
     <Button>확인</Button>,
   ],
 };
@@ -60,7 +60,7 @@ CustomGapColumn.args = {
   direction: "column",
   gap: "1rem",
   children: [
-    <Button theme={BUTTON_THEME.TERTIARY}>클릭</Button>,
+    <Button apperance={BUTTON_APPERANCE.TERTIARY}>클릭</Button>,
     <Button>클릭</Button>,
   ],
 };
@@ -68,16 +68,16 @@ CustomGapColumn.args = {
 export const NumberButtonGroup = () => {
   return (
     <ButtonGroup gap="10px">
-      <Button theme={BUTTON_THEME.OUTLINE}>
+      <Button apperance={BUTTON_APPERANCE.OUTLINE}>
         <Icon icon="arrowleftalt" />
         이전
       </Button>
       {[1, 2, 3, 4, 5].map((num) => (
-        <Button theme={BUTTON_THEME.OUTLINE} key={num}>
+        <Button apperance={BUTTON_APPERANCE.OUTLINE} key={num}>
           {num}
         </Button>
       ))}
-      <Button theme={BUTTON_THEME.OUTLINE}>
+      <Button apperance={BUTTON_APPERANCE.OUTLINE}>
         다음
         <Icon icon="arrowrightalt" />
       </Button>
