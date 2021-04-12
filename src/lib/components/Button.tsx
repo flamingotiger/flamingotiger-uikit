@@ -133,6 +133,8 @@ export interface ButtonProps {
   children?: React.ReactNode;
   /** 버튼 타입 */
   theme?: BUTTON_THEME;
+  /** 버튼 사용여부 */
+  disalbed?: boolean;
 }
 
 /** 버튼을 사용하고 싶을 땐 `Button` 컴포넌트를 사용하세요.

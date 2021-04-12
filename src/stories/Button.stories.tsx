@@ -1,12 +1,13 @@
 import React from "react";
 import Button, { ButtonProps, BUTTON_THEME } from "../lib/components/Button";
+import { Story, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Button",
   component: Button,
   argTypes: {
     children: { control: "text" },
-    disabled: false,
+    disabled: { control: "boolean" },
     theme: {
       control: {
         type: "select",
@@ -20,29 +21,43 @@ export default {
       },
     },
   },
-};
+} as Meta;
 
-export const Basic = (args: ButtonProps) => <Button {...args} />;
+export const Basic: Story<ButtonProps> = (args) => <Button {...args} />;
 Basic.args = {
   theme: BUTTON_THEME.PRIMARY,
+  children: "PRIMARY",
 };
-export const Secondary = () => (
-  <Button theme={BUTTON_THEME.SECONDARY}>SECONDARY</Button>
-);
 
-export const Tertiary = () => (
-  <Button theme={BUTTON_THEME.TERTIARY}>TERTIARY</Button>
-);
+export const Secondary = Basic.bind({});
+Secondary.args = {
+  theme: BUTTON_THEME.SECONDARY,
+  children: "SECONDARY",
+};
 
-export const Disabled = () => <Button disabled>DISABLED</Button>;
+export const Tertiary = Basic.bind({});
+Tertiary.args = {
+  theme: BUTTON_THEME.TERTIARY,
+  children: "TERTIARY",
+};
+export const Disabled = Basic.bind({});
+Disabled.args = {
+  children: "DISABLED",
+  theme: BUTTON_THEME.DISABLED,
+  disalbed: true,
+};
 
-export const PrimaryOutline = () => (
-  <Button theme={BUTTON_THEME.PRIMARY_OUTLINE}>PRIMARY OUTLINE</Button>
-);
+export const PrimaryOutline = Basic.bind({});
+PrimaryOutline.args = {
+  children: "PRIMARY OUTLINE",
+  theme: BUTTON_THEME.PRIMARY_OUTLINE,
+};
 
-export const Outline = () => (
-  <Button theme={BUTTON_THEME.OUTLINE}>OUTLINE</Button>
-);
+export const Outline = Basic.bind({});
+Outline.args = {
+  children: "OUTLINE",
+  theme: BUTTON_THEME.OUTLINE,
+};
 
 export const All = () => (
   <div style={{ display: "flex" }}>

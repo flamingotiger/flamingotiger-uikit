@@ -1,13 +1,14 @@
 import React from "react";
 import Icon, { IconProps, iconTypes } from "../lib/components/Icon/Icon";
 import styled from "@emotion/styled";
+import { Story, Meta } from "@storybook/react";
 
 export default {
   title: "Components/Icon",
   component: Icon,
   argTypes: {
-    color: { control: "black" },
-    size: { control: "1rem" },
+    color: { control: "color" },
+    size: { control: "text" },
     icon: {
       control: {
         type: "select",
@@ -15,20 +16,21 @@ export default {
       },
     },
   },
-};
+} as Meta;
 
-export const Basic = (args: IconProps) => <Icon {...args} />;
+export const Basic: Story<IconProps> = (args) => <Icon {...args} />;
 Basic.args = {
   icon: "plus",
 };
 
-export const CustomSize = () => <Icon icon="plus" size="4rem" />;
+export const CustomSize = Basic.bind({});
+CustomSize.args = { icon: "plus", size: "4rem" };
 
-export const CustomColor = () => <Icon icon="plus" color="red" />;
+export const CustomColor = Basic.bind({});
+CustomColor.args = { icon: "plus", color: "red" };
 
-export const CustomizedWithStyle = () => (
-  <Icon icon="plus" style={{ color: "red", width: "4rem" }} />
-);
+export const CustomizedWithStyle = Basic.bind({});
+CustomizedWithStyle.args = { style: { color: "red", width: "4rem" } };
 
 export const InlineBlockIcon = () => (
   <p>

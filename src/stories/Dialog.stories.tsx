@@ -25,11 +25,11 @@ export default {
   },
 } as Meta;
 
-export const dialog: Story<DialogProps> = (args: DialogProps) => {
+export const Basic: Story<DialogProps> = (args: DialogProps) => {
   return <Dialog {...args} />;
 };
 
-dialog.args = {
+Basic.args = {
   title: "포스트 작성 성공",
   description: "포스트 작성을 성공하였습니다.",
   visible: true,
@@ -38,7 +38,7 @@ dialog.args = {
   cancellable: false,
 };
 
-export const CancelLable = dialog.bind({});
+export const CancelLable = Basic.bind({});
 CancelLable.args = {
   title: "포트스 삭제",
   description: "포스트를 삭제하시겠습니까?",
@@ -47,7 +47,7 @@ CancelLable.args = {
   cancellable: true,
 };
 
-export const CustomContent = dialog.bind({});
+export const CustomContent = Basic.bind({});
 CustomContent.args = {
   visible: true,
   children: "Custom Content",
