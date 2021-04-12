@@ -1,5 +1,5 @@
 import React from "react";
-import Button, { ButtonProps, BUTTON_APPERANCE } from "../lib/components/Button";
+import Button, { ButtonProps, BUTTON_APPERANCE } from "../lib/Button";
 import { Story, Meta } from "@storybook/react";
 
 export default {

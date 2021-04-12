@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { color, typography } from "../../shared/styles";
+import { color, typography } from "../shared/styles";
 import { darken, lighten, rem, rgba } from "polished";
 
 export enum BUTTON_APPERANCE {

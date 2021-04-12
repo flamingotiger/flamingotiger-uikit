@@ -1,5 +1,5 @@
 import React from "react";
-import Icon, { IconProps, iconTypes } from "../lib/components/Icon/Icon";
+import Icon, { IconProps, iconTypes } from "../lib/Icon/Icon";
 import styled from "@emotion/styled";
 import { Story, Meta } from "@storybook/react";
 

@@ -2,9 +2,9 @@ import React from "react";
 import ButtonGroup, {
   ButtonGroupProps,
   BUTTON_GROUP_ALIGN,
-} from "../lib/components/ButtonGroup";
-import Button, { BUTTON_APPERANCE } from "../lib/components/Button";
-import Icon from "../lib/components/Icon/Icon";
+} from "../lib/ButtonGroup";
+import Button, { BUTTON_APPERANCE } from "../lib/Button";
+import Icon from "../lib/Icon/Icon";
 import { Story, Meta } from "@storybook/react";
 
 export default {

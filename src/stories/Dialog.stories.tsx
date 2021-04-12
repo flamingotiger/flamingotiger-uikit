@@ -1,5 +1,5 @@
 import React from "react";
-import Dialog, { DialogProps } from "../lib/components/Dialog";
+import Dialog, { DialogProps } from "../lib/Dialog";
 import { Story, Meta } from "@storybook/react";
 
 export default {

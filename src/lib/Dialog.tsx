@@ -1,8 +1,8 @@
 import React from "react";
 import { Fragment } from "react";
 import { css } from "@emotion/react";
-import Button, { BUTTON_APPERANCE } from "../components/Button";
-import ButtonGroup, { BUTTON_GROUP_ALIGN } from "../components/ButtonGroup";
+import Button, { BUTTON_APPERANCE } from "./Button";
+import ButtonGroup, { BUTTON_GROUP_ALIGN } from "./ButtonGroup";
 import styled from "@emotion/styled";
 
 const fullscreen = css`
