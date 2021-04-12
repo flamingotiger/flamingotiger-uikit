@@ -1,0 +1,54 @@
+import { Meta, ColorPalette, ColorItem } from "@storybook/addon-docs/blocks";
+
+import { color } from "../shared/styles";
+
+<Meta title="Colors" />
+
+# Colors
+
+<ColorPalette>
+  <ColorItem
+    title="color.primary"
+    subtitle="Orange"
+    colors={[color.primary]}
+  />
+  <ColorItem
+    title="color.secondary"
+    subtitle="Orange Dark"
+    colors={[color.secondary]}
+  />
+  <ColorItem
+    title="color.tertiary"
+    subtitle="Grey"
+    colors={[color.tertiary]}
+  />
+  <ColorItem
+    title="color.positive"
+    subtitle="Green"
+    colors={[color.positive]}
+  />
+  <ColorItem
+    title="color.warning"
+    subtitle="Ochre"
+    colors={[color.warning]}
+  />
+  <ColorItem
+    title="color.negative"
+    subtitle="Red"
+    colors={[color.negative]}
+  />
+  <ColorItem
+    title="Monochrome"
+    colors={[
+      color.darkest,
+      color.darker,
+      color.dark,
+      color.mediumdark,
+      color.medium,
+      color.mediumlight,
+      color.light,
+      color.lighter,
+      color.lightest,
+    ]}
+  />
+</ColorPalette>

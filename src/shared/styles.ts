@@ -15,16 +15,13 @@ export const color = {
   primary: "#FF6d00",
   secondary: "#FF6d00",
   tertiary: "#DDDDDD",
-
   primarydark: "#FF5722",
-
   orange: "#FC521F",
   gold: "#FFAE00",
   green: "#66BF3C",
   seafoam: "#37D5D3",
   purple: "#6F2CAC",
   ultraviolet: "#2A0481",
-
   // Monochrome
   white: "#FFFFFF",
   lightest: "#FFFFFF",
@@ -36,9 +33,7 @@ export const color = {
   dark: "#666666",
   darker: "#444444",
   darkest: "#333333",
-
   border: "rgba(0,0,0,.1)",
-
   // Status
   positive: "#66BF3C",
   negative: "#FF4400",
