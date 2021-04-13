@@ -70,6 +70,8 @@ export type DialogProps = {
   onCancel?: () => void;
   /** 확인시 기능 */
   onConfirm?: () => void;
+  /** 팝업 닫기 기능 */
+  onClose?:() => void;
 };
 /** 팝업을 사용하고 싶을 땐 `Dialog` 컴포넌트를 사용하세요.
  *
@@ -98,12 +100,13 @@ const Dialog: React.FC<DialogProps> = ({
   className,
   onCancel,
   onConfirm,
+  onClose
 }) => {
   if (!visible) return null;
 
   return (
     <Fragment>
-      <DarkLayer />
+      <DarkLayer onClick={onClose}/>
       <WhiteBoxWrapper>
         <WhiteBox className={className}>
           {title && <h3>{title}</h3>}
