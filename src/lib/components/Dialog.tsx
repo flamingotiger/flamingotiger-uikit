@@ -5,7 +5,7 @@ import Button, { BUTTON_APPERANCE } from "../components/Button";
 import ButtonGroup, { BUTTON_GROUP_ALIGN } from "../components/ButtonGroup";
 import styled from "@emotion/styled";
 
-const fullscreen = css`
+const fullScreen = css`
   position: fixed;
   top: 0;
   left: 0;
@@ -14,13 +14,13 @@ const fullscreen = css`
 `;
 
 const DarkLayer = styled.div`
-  ${fullscreen};
+  ${fullScreen};
   z-index: 10;
   background: rgba(0, 0, 0, 0.5);
 `;
 
 const WhiteBoxWrapper = styled.div`
-  ${fullscreen};
+  ${fullScreen};
   z-index: 15;
   display: flex;
   align-items: center;
@@ -71,7 +71,7 @@ export type DialogProps = {
   /** 확인시 기능 */
   onConfirm?: () => void;
   /** 팝업 닫기 기능 */
-  onClose?:() => void;
+  onClose?: () => void;
 };
 /** 팝업을 사용하고 싶을 땐 `Dialog` 컴포넌트를 사용하세요.
  *
@@ -100,22 +100,28 @@ const Dialog: React.FC<DialogProps> = ({
   className,
   onCancel,
   onConfirm,
-  onClose
+  onClose,
 }) => {
   if (!visible) return null;
 
   return (
     <Fragment>
-      <DarkLayer onClick={onClose}/>
+      <DarkLayer onClick={onClose} />
       <WhiteBoxWrapper>
         <WhiteBox className={className}>
           {title && <h3>{title}</h3>}
           {description && <p>{description}</p>}
           {children}
           {!hideButtons && (
-            <ButtonGroup style={{ marginTop: "1rem" }} buttonGroupAlign={BUTTON_GROUP_ALIGN.RIGHT}>
+            <ButtonGroup
+              style={{ marginTop: "1rem" }}
+              buttonGroupAlign={BUTTON_GROUP_ALIGN.RIGHT}
+            >
               {cancellable && (
-                <Button apperance={BUTTON_APPERANCE.TERTIARY} onClick={onCancel}>
+                <Button
+                  apperance={BUTTON_APPERANCE.TERTIARY}
+                  onClick={onCancel}
+                >
                   {cancelText}
                 </Button>
               )}
