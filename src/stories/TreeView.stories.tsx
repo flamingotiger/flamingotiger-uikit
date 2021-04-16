@@ -1,5 +1,5 @@
 import React from "react";
-import TreeView from "../lib/TreeView";
+import TreeView, { TreeViewProps } from "../lib/TreeView";
 import { Story, Meta } from "@storybook/react";
 
 export default {
@@ -8,4 +8,33 @@ export default {
   argTypes: {},
 } as Meta;
 
-export const Basic: Story = (args) => <TreeView {...args} />;
+const data = [
+  {
+    id: "1단계 1번",
+    name: "1단계 1번",
+    children: [{ id: "2단계 1번", name: "2단계 1번", children: [] }],
+  },
+  {
+    id: "1단계 2번",
+    name: "1단계 2번",
+    children: [
+      {
+        id: "2단계 1번",
+        name: "2단계 1번",
+        children: [
+          {
+            id: "3단계 1번",
+            name: "3단계 1번",
+            children: [{ id: "4단계 1번", name: "4단계 1번", children: [] }],
+          },
+        ],
+      },
+      { id: "2단계 2번", name: "2단계 2번", children: [] },
+    ],
+  },
+];
+
+export const Basic: Story<TreeViewProps> = (args) => <TreeView {...args} />;
+Basic.args = {
+  data,
+};

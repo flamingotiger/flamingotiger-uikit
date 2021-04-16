@@ -1,7 +1,12 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import React from "react";
-import { Item, ItemType, TreeViewContextProvider } from "./TreeViewContext";
+import { lighten, rem } from "polished";
+import React, { useState } from "react";
+import { color, typography } from "../../shared/styles";
+import Icon from "../Icon/Icon";
+
+export type ItemType = "caret" | "nested";
+export type Item = { id: string; name: string; children: Item[] };
 
 const resetListStyle = css`
   list-style: none;
@@ -9,42 +14,22 @@ const resetListStyle = css`
   padding: 0;
 `;
 
-const datas = [
-  {
-    id: "1단계 1번",
-    name: "1단계 1번",
-    children: [{ id: "2단계 1번", name: "2단계 트리 - 1", children: [] }],
-  },
-  {
-    id: "1단계 2번",
-    name: "1단계 2번",
-    children: [
-      {
-        id: "2단계 1번",
-        name: "2단계 1번",
-        children: [
-          {
-            id: "3단계 1번",
-            name: "3단계 1번",
-            children: [{ id: "4단계 1번", name: "4단계 1번", children: [] }],
-          },
-        ],
-      },
-      { id: "2단계 2번", name: "2단계 2번", children: [] },
-    ],
-  },
-];
+const TreeViewListStyle = styled.ul`
+  ${resetListStyle}
+  margin-left: 1.25rem;
+`;
 
-const TreeViewListStyle = styled.ul``;
 type TreeViewListProps = {
   items: Item[];
   level: number;
 };
+
 const TreeViewList: React.FC<TreeViewListProps> = ({ items, level }) => {
   return (
     <TreeViewListStyle className="tree_list">
       {items.map((item, index) => (
         <TreeViewItem
+          key={item.id}
           type={item.children.length ? "nested" : "caret"}
           item={item}
           index={index}
@@ -55,7 +40,31 @@ const TreeViewList: React.FC<TreeViewListProps> = ({ items, level }) => {
   );
 };
 
-const TreeViewItemStyle = styled.li``;
+const TreeViewItemStyle = styled.li`
+  ${resetListStyle};
+`;
+const TreeViewItemNameStyle = styled.div`
+  display: flex;
+  align-items: center;
+  color: ${color.darkest};
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  padding-left: 0.25rem;
+  &:hover {
+    color: ${lighten(0.1, color.primary)};
+    background-color: ${color.lighter};
+  }
+`;
+
+const NameStyle = styled.span`
+  margin-left: 0.25rem;
+  font-size: ${rem(typography.size.s3)};
+  line-height: ${rem(typography.size.s3)};
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem 1.25rem 0.5rem 0;
+`;
 type TreeViewItemProps = {
   item: Item;
   index: number;
@@ -68,6 +77,8 @@ const TreeViewItem: React.FC<TreeViewItemProps> = ({
   index,
   level,
 }) => {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const onClick = () => setIsExpanded((prevIsExpanded) => !prevIsExpanded);
   if (type === "caret") {
     return (
       <TreeViewItemStyle
@@ -79,9 +90,10 @@ const TreeViewItem: React.FC<TreeViewItemProps> = ({
         aria-posinset={index + 1}
         aria-setsize={item.children.length}
         aria-expanded="false"
-        tabIndex={0}
       >
-        <span>{item.name}</span>
+        <TreeViewItemNameStyle tabIndex={0} onClick={onClick}>
+          <NameStyle>{item.name}</NameStyle>
+        </TreeViewItemNameStyle>
       </TreeViewItemStyle>
     );
   }
@@ -97,8 +109,14 @@ const TreeViewItem: React.FC<TreeViewItemProps> = ({
         aria-setsize={item.children.length}
         aria-expanded="true"
       >
-        <span tabIndex={0}>{item.name}</span>
-        {item.children.length > 0 && (
+        <TreeViewItemNameStyle tabIndex={0} onClick={onClick}>
+          <Icon
+            icon={isExpanded ? "arrowdown" : "arrowright"}
+            size={rem(typography.size.s3)}
+          />
+          <NameStyle>{item.name}</NameStyle>
+        </TreeViewItemNameStyle>
+        {item.children.length > 0 && isExpanded && (
           <TreeViewList items={item.children} level={level} />
         )}
       </TreeViewItemStyle>
@@ -107,22 +125,19 @@ const TreeViewItem: React.FC<TreeViewItemProps> = ({
   return null;
 };
 
-const TreeViewContentStyle = styled.ul`
+const TreeViewStyle = styled.ul`
   ${resetListStyle}
 `;
 
-interface TreeViewProps {
+export type TreeViewProps = {
   data: Item[];
   className?: string;
   style?: React.CSSProperties;
-}
-const TreeViewContent: React.FC<TreeViewProps> = ({
-  data,
-  className,
-  style,
-}) => {
+};
+
+const TreeView: React.FC<TreeViewProps> = ({ data, className, style }) => {
   return (
-    <TreeViewContentStyle
+    <TreeViewStyle
       className={`tree_view ${className}`}
       style={style}
       role="tree"
@@ -131,26 +146,15 @@ const TreeViewContent: React.FC<TreeViewProps> = ({
       {data.length > 0 &&
         data.map((item, index) => (
           <TreeViewItem
+            key={item.id}
             type={item.children.length ? "nested" : "caret"}
             level={1}
             item={item}
             index={index}
           />
         ))}
-    </TreeViewContentStyle>
+    </TreeViewStyle>
   );
-};
-
-const TreeView: React.FC<TreeViewProps> = (props) => {
-  return (
-    <TreeViewContextProvider>
-      <TreeViewContent {...props} />
-    </TreeViewContextProvider>
-  );
-};
-
-TreeView.defaultProps = {
-  data: datas,
 };
 
 export default TreeView;
