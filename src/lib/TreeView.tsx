@@ -2,8 +2,8 @@ import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { lighten, rem } from "polished";
 import React, { useState } from "react";
-import { color, typography } from "../../shared/styles";
-import Icon from "../Icon/Icon";
+import { color, typography } from "../shared/styles";
+import Icon from "./Icon/Icon";
 
 export type ItemType = "caret" | "nested";
 export type Item = { id: string; name: string; children: Item[] };
@@ -77,7 +77,7 @@ const TreeViewItem: React.FC<TreeViewItemProps> = ({
   index,
   level,
 }) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState<boolean>(false);
   const onClick = () => setIsExpanded((prevIsExpanded) => !prevIsExpanded);
   if (type === "caret") {
     return (
