@@ -12,6 +12,7 @@ const resetListStyle = css`
   list-style: none;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 `;
 
 const TreeViewListStyle = styled.ul`
