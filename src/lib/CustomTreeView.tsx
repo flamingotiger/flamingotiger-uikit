@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
-import { typography } from "../shared/styles";
-import { rem } from "polished";
+import { color, typography } from "../shared/styles";
+import { rem, rgba } from "polished";
 import Icon from "./Icon/Icon";
 
 const resetListStyle = css`
@@ -17,6 +17,7 @@ const CustomTreeViewListStyle = styled.ul`
 `;
 const CustomTreeViewItemStyle = styled.li`
   ${resetListStyle};
+  margin-bottom: 0.25rem;
 `;
 const CustomTreeViewItemButtonStyle = styled.div`
   width: 100%;
@@ -25,6 +26,10 @@ const CustomTreeViewItemButtonStyle = styled.div`
   box-sizing: border-box;
   cursor: pointer;
   position: relative;
+  outline: none;
+  &:focus {
+    box-shadow: 0 0 0 0.25rem ${rgba(color.primary, 0.5)};
+  }
 `;
 const IconStyle = styled.span`
   margin-right: 0.625rem;
